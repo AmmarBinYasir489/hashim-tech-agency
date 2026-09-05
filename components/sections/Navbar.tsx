@@ -48,7 +48,9 @@ export default function Navbar() {
   return (
     <>
       <motion.nav
-        className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
+        className={`fixed top-0 left-0 right-0 transition-all duration-300 ${
+          mobileOpen ? "z-[997]" : "z-[1000]"
+        } ${
           scrolled
             ? "bg-white/95 backdrop-blur-md shadow-nav"
             : "bg-transparent"

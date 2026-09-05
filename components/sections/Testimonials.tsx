@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import { motion } from "framer-motion";
-import { Star, ExternalLink } from "lucide-react";
+import { Star, ExternalLink, ChevronLeft, ChevronRight } from "lucide-react";
 import Image from "next/image";
 import ScrollReveal from "../ui/ScrollReveal";
 
@@ -114,6 +114,13 @@ export default function Testimonials() {
 
   const duplicated = [...testimonials, ...testimonials];
 
+  const scrollBy = (direction: "left" | "right") => {
+    const el = scrollRef.current;
+    if (!el) return;
+    const amount = direction === "left" ? -400 : 400;
+    el.scrollBy({ left: amount, behavior: "smooth" });
+  };
+
   return (
     <section className="relative py-24 lg:py-32 bg-white overflow-hidden" id="testimonials">
       <div className="container mx-auto px-6">
@@ -136,13 +143,29 @@ export default function Testimonials() {
         </div>
       </div>
 
-      <div
-        ref={scrollRef}
-        className="flex gap-6 overflow-hidden px-6 pb-4"
-        onMouseEnter={() => (isPaused.current = true)}
-        onMouseLeave={() => (isPaused.current = false)}
-        style={{ scrollBehavior: "auto" }}
-      >
+      <div className="relative">
+        <button
+          onClick={() => scrollBy("left")}
+          className="absolute left-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors hidden sm:flex"
+          aria-label="Scroll left"
+        >
+          <ChevronLeft className="w-5 h-5 text-text-primary" />
+        </button>
+        <button
+          onClick={() => scrollBy("right")}
+          className="absolute right-4 top-1/2 -translate-y-1/2 z-20 w-10 h-10 rounded-full bg-white shadow-lg border border-gray-200 flex items-center justify-center hover:bg-gray-50 transition-colors hidden sm:flex"
+          aria-label="Scroll right"
+        >
+          <ChevronRight className="w-5 h-5 text-text-primary" />
+        </button>
+
+        <div
+          ref={scrollRef}
+          className="flex gap-6 overflow-x-auto px-6 pb-4 scrollbar-hide"
+          onMouseEnter={() => (isPaused.current = true)}
+          onMouseLeave={() => (isPaused.current = false)}
+          style={{ scrollBehavior: "auto", scrollbarWidth: "none", msOverflowStyle: "none" }}
+        >
         {duplicated.map((t, idx) => (
           <div
             key={`${t.id}-${idx}`}
@@ -180,10 +203,11 @@ export default function Testimonials() {
             </div>
           </div>
         ))}
-      </div>
+        </div>
 
-      <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
-      <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute left-0 top-0 bottom-0 w-24 bg-gradient-to-r from-white to-transparent pointer-events-none z-10" />
+        <div className="absolute right-0 top-0 bottom-0 w-24 bg-gradient-to-l from-white to-transparent pointer-events-none z-10" />
+      </div>
     </section>
   );
 }

@@ -97,30 +97,30 @@ export default function Process() {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, duration: 0.6 }}
             >
-              <div className="flex items-start gap-5 mb-6">
+              <div className="flex items-start gap-4 sm:gap-5 mb-6">
                 <div className="relative flex-shrink-0">
-                  <div className="w-16 h-16 rounded-2xl bg-accent/10 flex items-center justify-center transition-all duration-300 group-hover:bg-accent group-hover:scale-110">
-                    <step.icon className="w-7 h-7 text-accent transition-colors group-hover:text-white" />
+                  <div className="w-12 h-12 sm:w-16 sm:h-16 rounded-2xl bg-accent/10 flex items-center justify-center transition-all duration-300 group-hover:bg-accent group-hover:scale-110">
+                    <step.icon className="w-5 h-5 sm:w-7 sm:h-7 text-accent transition-colors group-hover:text-white" />
                   </div>
-                  <span className="absolute -top-2 -right-2 w-7 h-7 rounded-lg bg-text-primary text-white text-xs font-bold flex items-center justify-center">
+                  <span className="absolute -top-2 -right-2 w-6 h-6 sm:w-7 sm:h-7 rounded-lg bg-text-primary text-white text-[10px] sm:text-xs font-bold flex items-center justify-center">
                     {step.number}
                   </span>
                 </div>
-                <div className="pt-1">
-                  <h3 className="text-xl font-bold tracking-tight mb-2">
+                <div className="pt-1 min-w-0">
+                  <h3 className="text-lg sm:text-xl font-bold tracking-tight mb-2">
                     {step.title}
                   </h3>
-                  <p className="text-sm text-text-secondary leading-relaxed">
+                  <p className="text-xs sm:text-sm text-text-secondary leading-relaxed">
                     {step.desc}
                   </p>
                 </div>
               </div>
 
-              <div className="grid grid-cols-2 gap-3 ml-[84px]">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2 sm:gap-3 sm:ml-[84px]">
                 {step.details.map((detail) => (
                   <div key={detail} className="flex items-center gap-2">
-                    <CheckCircle className="w-4 h-4 text-accent flex-shrink-0" />
-                    <span className="text-xs text-text-secondary">{detail}</span>
+                    <CheckCircle className="w-3.5 h-3.5 sm:w-4 sm:h-4 text-accent flex-shrink-0" />
+                    <span className="text-[11px] sm:text-xs text-text-secondary">{detail}</span>
                   </div>
                 ))}
               </div>
