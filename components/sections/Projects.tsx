@@ -123,28 +123,28 @@ export default function Projects() {
                     className="object-cover transition-transform duration-700 group-hover:scale-[1.04]"
                     sizes={project.featured ? "(max-width: 768px) 100vw, 60vw" : "(max-width: 768px) 100vw, 50vw"}
                   />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#052c62]/80 to-transparent opacity-80 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
 
                 <div className="p-8 lg:p-10 flex flex-col justify-center">
-                  <span className="font-mono text-xs text-accent uppercase tracking-[0.1em] mb-4">
+                  <span className="font-mono text-xs text-white/90 uppercase tracking-[0.1em] mb-4">
                     {project.category}
                   </span>
                   <h3
-                    className={`font-bold leading-tight tracking-tight mb-4 ${
+                    className={`font-bold leading-tight tracking-tight mb-4 text-white ${
                       project.featured ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl"
                     }`}
                   >
                     {project.title}
                   </h3>
-                  <p className="text-sm text-text-secondary leading-relaxed mb-6">
+                  <p className="text-sm text-white/90 leading-relaxed mb-6">
                     {project.summary}
                   </p>
                   <div className="flex flex-wrap gap-2 mb-8">
                     {project.tech.map((t) => (
                       <span
                         key={t}
-                        className="font-mono text-[11px] px-3 py-1 bg-bg rounded-full shadow-neu-in-sm text-text-secondary"
+                        className="font-mono text-[11px] px-3 py-1 bg-white/10 rounded-full shadow-neu-in-sm text-white/90 border border-white/10"
                       >
                         {t}
                       </span>
@@ -154,7 +154,7 @@ export default function Projects() {
                     href={project.url ?? "#"}
                     target={project.url ? "_blank" : undefined}
                     rel={project.url ? "noopener noreferrer" : undefined}
-                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-bg text-text-primary text-sm font-semibold rounded-full shadow-neu-sm hover:shadow-neu hover:-translate-y-0.5 transition-all duration-300 w-fit"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-white/10 text-white text-sm font-semibold rounded-full shadow-neu-sm hover:shadow-neu hover:-translate-y-0.5 transition-all duration-300 w-fit"
                   >
                     {project.url ? "Visit Site" : "View Case Study"}
                     <ArrowUpRight className="w-4 h-4" />
