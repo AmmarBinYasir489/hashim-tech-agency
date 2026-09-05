@@ -129,7 +129,7 @@ export default function Projects() {
                 <div className="p-8 lg:p-10 flex flex-col justify-center">
                   <span className="font-mono text-xs text-accent uppercase tracking-[0.1em] mb-4">
                     {project.category}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-200" />
+                  </span>
                   <h3
                     className={`font-bold leading-tight tracking-tight mb-4 ${
                       project.featured ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl"
