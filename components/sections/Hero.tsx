@@ -3,54 +3,51 @@
 import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
-import FloatingShapes from "../ui/FloatingShapes";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-screen flex items-center pt-[120px] pb-20 overflow-hidden" id="hero">
-      {/* Grid Background */}
+    <section className="relative min-h-screen flex items-center pt-[120px] pb-20 overflow-hidden bg-bg" id="home">
+      {/* Subtle background pattern */}
       <div
-        className="absolute inset-0 z-0 opacity-[0.03]"
+        className="absolute inset-0 z-0 opacity-[0.02]"
         style={{
           backgroundImage: `
             linear-gradient(var(--text-primary) 1px, transparent 1px),
             linear-gradient(90deg, var(--text-primary) 1px, transparent 1px)
           `,
-          backgroundSize: "60px 60px",
+          backgroundSize: "80px 80px",
           maskImage: "radial-gradient(ellipse 60% 50% at 50% 40%, black 20%, transparent 70%)",
           WebkitMaskImage: "radial-gradient(ellipse 60% 50% at 50% 40%, black 20%, transparent 70%)",
         }}
         aria-hidden="true"
       />
 
-      <FloatingShapes />
-
       <div className="container mx-auto px-6 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 lg:gap-16 items-center">
           {/* Left - Text */}
           <div className="max-w-[640px]">
             <motion.div
-              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#F7F9FC] rounded-full text-sm text-[#0B2854] mb-6 font-medium shadow-sm"
+              className="inline-flex items-center gap-2 px-4 py-2 bg-accent/10 rounded-full text-sm text-accent mb-6 font-semibold tracking-wide uppercase"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8 }}
             >
-              DIGITAL &amp; BUSINESS SOLUTIONS
+              Digital &amp; Business Solutions
             </motion.div>
 
             <motion.h1
-              className="text-4xl sm:text-5xl lg:text-5xl font-extrabold leading-tight tracking-tight mb-4 text-[#06152D]"
+              className="text-4xl sm:text-5xl lg:text-6xl font-bold leading-[1.1] tracking-tight mb-6"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.1 }}
             >
               We Build Your Digital Presence.
               <br />
-              <span className="text-[#F5B51B]">We Help Your Business Grow.</span>
+              <span className="text-accent">We Help Your Business Grow.</span>
             </motion.h1>
 
             <motion.p
-              className="text-lg text-[#0B2854] leading-relaxed mb-8"
+              className="text-lg text-text-secondary leading-relaxed mb-8 max-w-[520px]"
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.2 }}
@@ -64,10 +61,17 @@ export default function Hero() {
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.8, delay: 0.3 }}
             >
-              <Link href="#contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[#F5B51B] text-[#06152D] rounded-full font-semibold">
+              <Link
+                href="#contact"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-text-primary rounded-xl font-semibold shadow-accent hover:bg-accent-hover transition-all duration-200"
+              >
                 Get Started
+                <ArrowRight className="w-4 h-4" />
               </Link>
-              <Link href="#services" className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-[#0B2854] text-[#0B2854] rounded-full font-semibold">
+              <Link
+                href="#services"
+                className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white border border-gray-200 text-text-primary rounded-xl font-semibold hover:border-accent hover:shadow-card transition-all duration-200"
+              >
                 Explore Services
               </Link>
             </motion.div>
@@ -76,17 +80,63 @@ export default function Hero() {
           {/* Right - Visual */}
           <div className="flex items-center justify-center">
             <div className="relative w-full max-w-[560px]">
-              <div className="rounded-[24px] bg-white shadow-lg p-6">
-                <div className="rounded-[16px] overflow-hidden bg-[#06152D] h-[280px] md:h-[340px] flex items-center justify-center">
-                  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80&auto=format&fit=crop" alt="dashboard" className="object-cover w-full h-full opacity-90" />
+              {/* Main card */}
+              <motion.div
+                className="rounded-card-xl bg-white shadow-card-lg p-4"
+                initial={{ opacity: 0, scale: 0.95 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ duration: 0.8, delay: 0.2 }}
+              >
+                <div className="rounded-card-lg overflow-hidden bg-gradient-to-br from-bg-dark to-bg-dark-alt h-[300px] md:h-[360px] flex items-center justify-center relative">
+                  <img
+                    src="https://images.unsplash.com/photo-1460925895917-afdab827c52f?w=1200&q=80&auto=format&fit=crop"
+                    alt="Business analytics dashboard showing growth metrics"
+                    className="object-cover w-full h-full opacity-80"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-bg-dark/60 to-transparent" />
+                  <div className="absolute bottom-6 left-6 right-6">
+                    <div className="bg-white/95 backdrop-blur rounded-xl p-4 shadow-lg">
+                      <div className="flex items-center gap-3">
+                        <div className="w-10 h-10 rounded-lg bg-accent/20 flex items-center justify-center">
+                          <span className="text-accent font-bold text-lg">H</span>
+                        </div>
+                        <div>
+                          <p className="text-sm font-semibold text-text-primary">Digital Growth</p>
+                          <p className="text-xs text-text-secondary">Building your online presence</p>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
                 </div>
-              </div>
-              <div className="absolute -right-8 -bottom-10 w-[160px] h-[320px] rounded-[24px] bg-white shadow-md overflow-hidden transform rotate-6">
-                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=60&auto=format&fit=crop" alt="phone" className="w-full h-full object-cover" />
-              </div>
-              <div className="absolute -left-8 -top-12 w-[160px] h-[160px] rounded-[24px] bg-white shadow-md overflow-hidden">
-                <img src="https://images.unsplash.com/photo-1526378721410-9f6f0b4d5d2f?w=800&q=60&auto=format&fit=crop" alt="analytics" className="w-full h-full object-cover" />
-              </div>
+              </motion.div>
+
+              {/* Floating card - phone */}
+              <motion.div
+                className="absolute -right-6 -bottom-8 w-[140px] h-[280px] rounded-card-xl bg-white shadow-card-lg overflow-hidden"
+                initial={{ opacity: 0, x: 20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.4 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1512941937669-90a1b58e7e9c?w=800&q=60&auto=format&fit=crop"
+                  alt="Mobile responsive website"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
+
+              {/* Floating card - analytics */}
+              <motion.div
+                className="absolute -left-6 -top-8 w-[140px] h-[140px] rounded-card-xl bg-white shadow-card-lg overflow-hidden"
+                initial={{ opacity: 0, x: -20 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ duration: 0.8, delay: 0.5 }}
+              >
+                <img
+                  src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?w=800&q=60&auto=format&fit=crop"
+                  alt="SEO analytics"
+                  className="w-full h-full object-cover"
+                />
+              </motion.div>
             </div>
           </div>
         </div>
@@ -109,13 +159,6 @@ export default function Hero() {
           />
         </div>
       </motion.div>
-
-      <style jsx>{`
-        @keyframes gradient-shift {
-          0%, 100% { background-position: 0% center; }
-          50% { background-position: 100% center; }
-        }
-      `}</style>
     </section>
   );
 }

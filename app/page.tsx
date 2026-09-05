@@ -3,15 +3,13 @@ import Hero from "@/components/sections/Hero";
 import TrustedBy from "@/components/sections/TrustedBy";
 import Services from "@/components/sections/Services";
 import FeaturedServices from "@/components/sections/FeaturedServices";
-import Projects from "@/components/sections/Projects";
+import BusinessSolutions from "@/components/sections/BusinessSolutions";
 import Finance from "@/components/sections/Finance";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Process from "@/components/sections/Process";
-import Technologies from "@/components/sections/Technologies";
 import Stats from "@/components/sections/Stats";
-import Testimonials from "@/components/sections/Testimonials";
-import CTABanner from "@/components/sections/CTABanner";
 import Contact from "@/components/sections/Contact";
+import CTABanner from "@/components/sections/CTABanner";
 import Footer from "@/components/sections/Footer";
 import BackToTop from "@/components/sections/BackToTop";
 
@@ -23,15 +21,13 @@ export default function Home() {
       <TrustedBy />
       <Services />
       <FeaturedServices />
+      <BusinessSolutions />
       <Finance />
-      <Projects />
       <WhyChooseUs />
       <Process />
-      <Technologies />
       <Stats />
-      <Testimonials />
-      <CTABanner />
       <Contact />
+      <CTABanner />
       <Footer />
       <BackToTop />
     </main>

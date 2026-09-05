@@ -1,68 +1,80 @@
 "use client";
 
 import { motion } from "framer-motion";
-import SectionLabel from "../ui/SectionLabel";
+import { MessageSquare, Search, Code, Rocket } from "lucide-react";
 import ScrollReveal from "../ui/ScrollReveal";
 import StaggerContainer, { StaggerItem } from "../ui/StaggerContainer";
 
 const steps = [
   {
     number: "01",
-    title: "Discovery & Strategy",
-    desc: "We dig deep into your business, audience, and goals. Through workshops and research, we define the project scope, technical architecture, and success metrics before a single line of code is written.",
+    icon: MessageSquare,
+    title: "Tell Us What You Need",
+    desc: "Submit your enquiry and tell us about your business goals. We'll review your requirements and get back to you.",
   },
   {
     number: "02",
-    title: "Design & Prototype",
-    desc: "Wireframes evolve into high-fidelity designs. Interactive prototypes let you experience the product before development begins. We iterate until every detail feels right.",
+    icon: Search,
+    title: "We Understand Your Goals",
+    desc: "We review your requirements in detail and prepare a tailored approach that aligns with your business objectives.",
   },
   {
     number: "03",
-    title: "Development & Testing",
-    desc: "Clean, modular code built with modern frameworks. Continuous integration, automated testing, and code reviews ensure reliability at every stage.",
+    icon: Code,
+    title: "We Build Your Solution",
+    desc: "Our team works on the appropriate solution, keeping you informed throughout the process with regular updates.",
   },
   {
     number: "04",
+    icon: Rocket,
     title: "Launch & Grow",
-    desc: "Staged deployment, performance monitoring, and post-launch support. We don&apos;t disappear after launch — we help you optimize, scale, and evolve.",
+    desc: "You move forward with professional support. We're here to help you optimize, scale, and evolve.",
   },
 ];
 
 export default function Process() {
   return (
-    <section className="py-24 lg:py-32 bg-bg-dark" id="process">
+    <section className="py-24 lg:py-32 bg-bg" id="process">
       <div className="container mx-auto px-6">
-        <div className="text-center max-w-[640px] mx-auto mb-16 lg:mb-24">
+        <div className="text-center max-w-[700px] mx-auto mb-16 lg:mb-20">
           <ScrollReveal>
-            <SectionLabel text="Our Process" />
+            <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4">
+              How It Works
+            </p>
           </ScrollReveal>
           <ScrollReveal delay={0.1}>
-            <h2 className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight mb-4">
-              From vision to launch
-              <br />
-              in four steps
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-4">
+              Simple Process. Clear Results.
             </h2>
           </ScrollReveal>
           <ScrollReveal delay={0.2}>
-            <p className="text-lg text-text-secondary leading-snug">
-              A proven framework that removes uncertainty and delivers predictable, high-quality results.
+            <p className="text-lg text-text-secondary leading-relaxed">
+              A straightforward approach that removes uncertainty and delivers predictable, high-quality results.
             </p>
           </ScrollReveal>
         </div>
 
-        <div className="relative max-w-[700px] mx-auto">
-          <div className="absolute left-8 md:left-8 top-0 bottom-0 w-0.5 bg-bg-dark shadow-neu-in-sm rounded-full" />
-
-          <StaggerContainer className="flex flex-col" staggerDelay={0.15}>
-            {steps.map((step) => (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <StaggerContainer className="contents" staggerDelay={0.1}>
+            {steps.map((step, i) => (
               <StaggerItem key={step.number}>
-                <div className="group flex gap-6 md:gap-8 pb-12 last:pb-0 relative">
-                  <div className="relative z-10 w-[72px] h-[72px] md:w-16 md:h-16 flex-shrink-0 rounded-full bg-bg shadow-neu flex items-center justify-center font-mono text-sm font-semibold text-accent border-2 border-transparent transition-all duration-200 group-hover:scale-105">
-                    {step.number}
-                  </div>
+                <div className="relative">
+                  {/* Connector line */}
+                  {i < steps.length - 1 && (
+                    <div className="hidden lg:block absolute top-10 left-[calc(50%+40px)] w-[calc(100%-80px)] h-px bg-gray-200" />
+                  )}
 
-                  <div className="pt-3 md:pt-4">
-                    <h3 className="text-xl font-semibold mb-2 tracking-tight">
+                  <div className="text-center">
+                    <div className="relative inline-flex">
+                      <div className="w-20 h-20 rounded-2xl bg-white border border-gray-100 shadow-card flex items-center justify-center mb-6 transition-all duration-300 hover:shadow-card-hover hover:border-accent/30">
+                        <step.icon className="w-7 h-7 text-accent" />
+                      </div>
+                      <span className="absolute -top-2 -right-2 w-7 h-7 rounded-lg bg-accent text-text-primary text-xs font-bold flex items-center justify-center">
+                        {step.number}
+                      </span>
+                    </div>
+
+                    <h3 className="text-lg font-semibold mb-2 tracking-tight">
                       {step.title}
                     </h3>
                     <p className="text-sm text-text-secondary leading-relaxed">

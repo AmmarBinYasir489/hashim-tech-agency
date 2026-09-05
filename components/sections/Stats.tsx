@@ -1,57 +1,32 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { useCounter } from "@/hooks/useCounter";
-import StaggerContainer, { StaggerItem } from "../ui/StaggerContainer";
+import ScrollReveal from "../ui/ScrollReveal";
 
-const statsData = [
-  { count: 150, suffix: "+", label: "Projects Delivered" },
-  { count: 98, suffix: "%", label: "Client Satisfaction" },
-  { count: 5, suffix: "+", label: "Years of Experience" },
-  { count: 40, suffix: "+", label: "Active Clients" },
+const stats = [
+  { label: "Web", value: "Design & Dev" },
+  { label: "SEO", value: "Optimization" },
+  { label: "Business", value: "Registration" },
+  { label: "Finance", value: "Solutions" },
 ];
-
-function StatCard({
-  count,
-  suffix,
-  label,
-}: {
-  count: number;
-  suffix: string;
-  label: string;
-}) {
-  const { ref, count: animatedCount } = useCounter(count, 2000, suffix);
-
-  return (
-    <motion.div
-      ref={ref}
-      className="group text-center p-8 lg:p-10 rounded-neu bg-bg-dark shadow-neu transition-all duration-300 hover:shadow-neu-hover hover:-translate-y-[3px]"
-    >
-      <div className="text-4xl lg:text-5xl font-bold tracking-tight leading-none mb-2 bg-gradient-to-br from-text-primary to-accent bg-clip-text text-transparent">
-        {animatedCount}{suffix}
-      </div>
-      <div className="text-sm text-text-secondary font-medium">{label}</div>
-    </motion.div>
-  );
-}
 
 export default function Stats() {
   return (
-    <section className="relative py-20 lg:py-24 bg-bg-dark overflow-hidden" id="stats">
-      <div
-        className="absolute inset-0 pointer-events-none"
-        style={{
-          background: "radial-gradient(ellipse at 30% 50%, rgba(14,165,233,0.05) 0%, transparent 60%)",
-        }}
-      />
-      <div className="container mx-auto px-6 relative z-10">
-        <StaggerContainer className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6" staggerDelay={0.1}>
-          {statsData.map((stat) => (
-            <StaggerItem key={stat.label}>
-              <StatCard {...stat} />
-            </StaggerItem>
+    <section className="py-20 bg-gradient-navy">
+      <div className="container mx-auto px-6">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
+          {stats.map((stat, i) => (
+            <ScrollReveal key={stat.label} delay={i * 0.1}>
+              <div className="text-center">
+                <div className="text-3xl sm:text-4xl lg:text-5xl font-bold text-accent mb-2">
+                  {stat.label}
+                </div>
+                <div className="text-sm text-white/60 uppercase tracking-widest">
+                  {stat.value}
+                </div>
+              </div>
+            </ScrollReveal>
           ))}
-        </StaggerContainer>
+        </div>
       </div>
     </section>
   );

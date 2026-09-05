@@ -1,40 +1,57 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import { ArrowRight, Phone, Mail } from "lucide-react";
 import ScrollReveal from "../ui/ScrollReveal";
 
 export default function CTABanner() {
   return (
-    <section className="py-24 lg:py-32">
+    <section className="py-24 lg:py-32 bg-bg" id="cta">
       <div className="container mx-auto px-6">
         <ScrollReveal>
-          <motion.div
-            className="relative bg-accent rounded-neu-xl p-12 lg:p-20 text-center overflow-hidden shadow-accent"
-            whileHover={{ scale: 1.005 }}
-            transition={{ duration: 0.3 }}
-          >
-            {/* Decorative orbs */}
-            <div className="absolute -top-1/2 -right-[20%] w-[500px] h-[500px] rounded-full bg-white/10 pointer-events-none" />
-            <div className="absolute -bottom-[30%] -left-[10%] w-[400px] h-[400px] rounded-full bg-white/[0.06] pointer-events-none" />
+          <div className="relative bg-gradient-navy rounded-card-xl p-12 lg:p-20 overflow-hidden">
+            {/* Decorative elements */}
+            <div className="absolute top-0 right-0 w-64 h-64 bg-accent/10 rounded-full blur-3xl" />
+            <div className="absolute bottom-0 left-0 w-48 h-48 bg-accent/5 rounded-full blur-2xl" />
 
-            <h2 className="relative z-10 text-3xl sm:text-4xl font-bold text-white leading-tight tracking-tight mb-4">
-              Ready to build something
-              <br />
-              that matters?
-            </h2>
-            <p className="relative z-10 text-lg text-white/80 max-w-[500px] mx-auto mb-8">
-              Let's talk about your project. No sales pitch — just an honest conversation about what's possible.
-            </p>
-            <Link
-              href="#contact"
-              className="relative z-10 inline-flex items-center gap-2 px-8 py-4 bg-white text-accent font-bold text-base rounded-full shadow-[0_8px_30px_rgba(0,0,0,0.15)] hover:bg-bg-light hover:text-accent-hover hover:shadow-[0_12px_40px_rgba(0,0,0,0.2)] transition-all duration-300"
-            >
-              Schedule a Free Call
-              <ArrowRight className="w-4 h-4" />
-            </Link>
-          </motion.div>
+            <div className="relative z-10 text-center max-w-[700px] mx-auto">
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-6 text-white">
+                Ready to Take the Next Step?
+              </h2>
+              <p className="text-lg text-white/70 leading-relaxed mb-10">
+                Whether you need a website, better visibility, business registration or financial support, we&apos;re here to help.
+              </p>
+
+              <div className="flex flex-col sm:flex-row gap-4 justify-center mb-10">
+                <Link
+                  href="#contact"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-text-primary rounded-xl font-semibold shadow-accent hover:bg-accent-hover transition-all duration-200"
+                >
+                  Start Your Enquiry
+                  <ArrowRight className="w-4 h-4" />
+                </Link>
+                <a
+                  href="tel:7882733546"
+                  className="inline-flex items-center justify-center gap-2 px-8 py-4 bg-white/10 border border-white/20 text-white rounded-xl font-semibold hover:bg-white/20 transition-all duration-200"
+                >
+                  <Phone className="w-4 h-4" />
+                  Contact Us
+                </a>
+              </div>
+
+              <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-white/60">
+                <a href="tel:7882733546" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <Phone className="w-4 h-4" />
+                  <span className="text-sm font-medium">7882733546</span>
+                </a>
+                <a href="mailto:hashimtechsolutions@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
+                  <Mail className="w-4 h-4" />
+                  <span className="text-sm font-medium">hashimtechsolutions@gmail.com</span>
+                </a>
+              </div>
+            </div>
+          </div>
         </ScrollReveal>
       </div>
     </section>

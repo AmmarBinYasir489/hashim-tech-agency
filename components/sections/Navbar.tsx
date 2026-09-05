@@ -7,10 +7,10 @@ import { Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
 const navLinks = [
+  { href: "#home", label: "Home" },
   { href: "#services", label: "Services" },
-  { href: "#projects", label: "Projects" },
-  { href: "#process", label: "Process" },
-  { href: "#testimonials", label: "Testimonials" },
+  { href: "#about", label: "About" },
+  { href: "#process", label: "How It Works" },
   { href: "#contact", label: "Contact" },
 ];
 
@@ -50,7 +50,7 @@ export default function Navbar() {
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
           scrolled
-            ? "bg-[#06152D]/95 backdrop-blur-[6px] saturate-[1.05] shadow-[0_6px_20px_rgba(2,6,23,0.5)]"
+            ? "bg-white/95 backdrop-blur-md shadow-nav"
             : "bg-transparent"
         }`}
         initial={{ y: -100 }}
@@ -59,28 +59,29 @@ export default function Navbar() {
       >
         <div
           className={`max-w-[1440px] mx-auto flex items-center justify-between gap-6 transition-all duration-300 ${
-            scrolled
-              ? "px-6 lg:px-8 py-3"
-              : "px-6 lg:px-8 py-6"
+            scrolled ? "px-6 lg:px-8 py-3" : "px-6 lg:px-8 py-5"
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 font-bold tracking-tight z-10">
-            <div className="w-14 h-14 rounded-[10px] overflow-hidden flex-shrink-0">
-              <Image src="/logo.png" alt="Hashim Tech" width={56} height={56} className="object-cover" />
+          <Link href="/" className="flex items-center gap-3 z-10">
+            <div className="w-11 h-11 rounded-xl overflow-hidden flex-shrink-0">
+              <Image src="/logo.png" alt="Hashim Tech" width={44} height={44} className="object-cover" />
             </div>
+            <span className={`text-lg font-bold tracking-tight transition-colors ${scrolled ? "text-text-primary" : "text-text-primary"}`}>
+              Hashim Tech
+            </span>
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1 bg-transparent p-1 rounded-full">
+          <div className="hidden lg:flex items-center gap-1">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
-                className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-150 ${
+                className={`px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200 ${
                   activeSection === link.href
-                    ? "bg-[#08233f] font-semibold text-[#F5B51B]"
-                    : "text-white/85 hover:text-white"
+                    ? "text-accent bg-accent/10"
+                    : "text-text-secondary hover:text-text-primary hover:bg-gray-100"
                 }`}
               >
                 {link.label}
@@ -92,7 +93,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#F5B51B] text-[#06152D] text-sm font-semibold rounded-full shadow-md hover:brightness-95 transition-all duration-200"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent text-text-primary text-sm font-semibold rounded-lg shadow-accent hover:bg-accent-hover transition-all duration-200"
             >
               Get Started
               <ArrowRight className="w-4 h-4" />
@@ -101,7 +102,7 @@ export default function Navbar() {
 
           {/* Mobile Toggle */}
           <button
-            className="lg:hidden w-10 h-10 rounded-[10px] flex items-center justify-center shadow-neu-in-sm text-text-primary hover:shadow-neu-in transition-shadow"
+            className="lg:hidden w-10 h-10 rounded-xl flex items-center justify-center text-text-primary hover:bg-gray-100 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
             aria-expanded={mobileOpen}
@@ -128,21 +129,22 @@ export default function Navbar() {
       <AnimatePresence>
         {mobileOpen && (
           <motion.div
-            className="fixed top-0 right-0 w-[min(380px,85vw)] h-screen bg-bg z-[999] lg:hidden flex flex-col"
+            className="fixed top-0 right-0 w-[min(380px,85vw)] h-screen bg-white z-[999] lg:hidden flex flex-col shadow-2xl"
             initial={{ x: "100%" }}
             animate={{ x: 0 }}
             exit={{ x: "100%" }}
-            transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
+            transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
           >
-            <div className="flex items-center justify-between px-8 py-6 border-b border-black/5">
-              <Link href="/" className="flex items-center gap-3 font-bold">
-                <div className="w-12 h-12 rounded-[10px] overflow-hidden flex-shrink-0">
-                  <Image src="/logo.png" alt="Hashim Tech" width={48} height={48} className="object-cover" />
+            <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100">
+              <Link href="/" className="flex items-center gap-3">
+                <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
+                  <Image src="/logo.png" alt="Hashim Tech" width={40} height={40} className="object-cover" />
                 </div>
+                <span className="text-lg font-bold">Hashim Tech</span>
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}
-                className="w-10 h-10 rounded-[10px] bg-bg shadow-neu-sm flex items-center justify-center hover:shadow-neu transition-shadow"
+                className="w-10 h-10 rounded-xl bg-gray-100 flex items-center justify-center hover:bg-gray-200 transition-colors"
                 aria-label="Close menu"
               >
                 <X className="w-5 h-5" />
@@ -160,7 +162,7 @@ export default function Navbar() {
                   <Link
                     href={link.href}
                     onClick={() => setMobileOpen(false)}
-                    className="block px-5 py-4 rounded-2xl text-base font-medium text-text-secondary hover:text-text-primary hover:bg-bg-light transition-colors"
+                    className="block px-5 py-4 rounded-xl text-base font-medium text-text-secondary hover:text-text-primary hover:bg-gray-50 transition-colors"
                   >
                     {link.label}
                   </Link>
@@ -168,13 +170,13 @@ export default function Navbar() {
               ))}
             </div>
 
-            <div className="p-6 border-t border-black/5">
+            <div className="p-6 border-t border-gray-100">
               <Link
                 href="#contact"
                 onClick={() => setMobileOpen(false)}
-                className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-accent text-white font-semibold rounded-full shadow-accent hover:bg-accent-hover transition-colors"
+                className="flex items-center justify-center gap-2 w-full px-6 py-3 bg-accent text-text-primary font-semibold rounded-xl shadow-accent hover:bg-accent-hover transition-colors"
               >
-                Start a Project
+                Get Started
                 <ArrowRight className="w-4 h-4" />
               </Link>
             </div>

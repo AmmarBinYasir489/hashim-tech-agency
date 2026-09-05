@@ -6,8 +6,8 @@ import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } f
 import ScrollReveal from "../ui/ScrollReveal";
 
 const contactDetails = [
-  { icon: Mail, label: "Email", value: "hashimtechsolutions@gmail.com" },
-  { icon: Phone, label: "Phone", value: "+44 7882 733546" },
+  { icon: Phone, label: "Phone", value: "7882733546", href: "tel:7882733546" },
+  { icon: Mail, label: "Email", value: "hashimtechsolutions@gmail.com", href: "mailto:hashimtechsolutions@gmail.com" },
   { icon: MapPin, label: "Location", value: "Remote-first, worldwide" },
   { icon: Clock, label: "Response Time", value: "Within 24 hours" },
 ];
@@ -17,8 +17,8 @@ export default function Contact() {
     name: "",
     email: "",
     phone: "",
-    company: "",
     service: "",
+    business: "",
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
@@ -43,33 +43,56 @@ export default function Contact() {
     if (!email.trim() || !/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
       showToast("Please enter a valid email address.", true); return;
     }
-    if (!message.trim()) { showToast("Please describe your project.", true); return; }
-    // prepare a WhatsApp-friendly message (do not include user's email) and open WhatsApp directly
+    if (!message.trim()) { showToast("Please describe what you need.", true); return; }
+
     setStatus("loading");
-    const fullMessage = `Hello Hashim Tech,\n\nI'd like to enquire about your ${formData.service || "service"} service.\n\nName: ${name}\nBusiness: ${formData.company || "(not provided)"}\nPhone: ${formData.phone || "(not provided)"}\n\nMessage:\n${message}`;
+    const fullMessage = `Hello Hashim Tech,
+
+I'd like to enquire about your ${formData.service || "service"} service.
+
+Name: ${name}
+Business: ${formData.business || "(not provided)"}
+Email: ${email}
+Phone: ${formData.phone || "(not provided)"}
+
+Message:
+${message}
+
+Please let me know how we can get started.`;
+
     setTimeout(() => {
       setStatus("success");
       const waUrl = `https://wa.me/447882733546?text=${encodeURIComponent(fullMessage)}`;
       window.open(waUrl, "_blank");
       showToast("Opening WhatsApp...");
-      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", service: "", business: "", message: "" });
     }, 600);
   };
 
   return (
     <section className="py-24 lg:py-32 bg-bg-dark" id="contact">
       <div className="container mx-auto px-6">
+        <div className="text-center max-w-[700px] mx-auto mb-16">
+          <ScrollReveal>
+            <p className="text-sm font-semibold text-accent uppercase tracking-widest mb-4">
+              Get in Touch
+            </p>
+          </ScrollReveal>
+          <ScrollReveal delay={0.1}>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight tracking-tight mb-4">
+              Let&apos;s Talk About Your Business
+            </h2>
+          </ScrollReveal>
+          <ScrollReveal delay={0.2}>
+            <p className="text-lg text-white/70 leading-relaxed">
+              Tell us what you need and we&apos;ll help you find the right solution.
+            </p>
+          </ScrollReveal>
+        </div>
+
         <div className="grid grid-cols-1 lg:grid-cols-[1fr_1.2fr] gap-12 lg:gap-16 items-start">
           {/* Info */}
           <ScrollReveal className="lg:sticky lg:top-[120px]">
-            <h2 className="text-3xl sm:text-4xl font-bold leading-tight tracking-tight mb-4">
-              Let's start a
-              <br />
-              conversation
-            </h2>
-            <p className="text-base text-text-secondary leading-relaxed mb-10">
-              Tell us about your project and we'll get back to you within 24 hours with a tailored plan and timeline.
-            </p>
             <div className="flex flex-col gap-6">
               {contactDetails.map((detail) => (
                 <motion.div
@@ -78,12 +101,18 @@ export default function Contact() {
                   whileHover={{ x: 4 }}
                   transition={{ duration: 0.2 }}
                 >
-                  <div className="w-12 h-12 rounded-xl bg-bg shadow-neu-in flex items-center justify-center text-xl text-accent flex-shrink-0">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center text-accent flex-shrink-0">
                     <detail.icon className="w-5 h-5" />
                   </div>
                   <div>
-                    <div className="text-sm text-text-secondary">{detail.label}</div>
-                    <div className="font-semibold text-text-primary text-base">{detail.value}</div>
+                    <div className="text-sm text-white/50">{detail.label}</div>
+                    {detail.href ? (
+                      <a href={detail.href} className="font-semibold text-white text-base hover:text-accent transition-colors">
+                        {detail.value}
+                      </a>
+                    ) : (
+                      <div className="font-semibold text-white text-base">{detail.value}</div>
+                    )}
                   </div>
                 </motion.div>
               ))}
@@ -94,7 +123,7 @@ export default function Contact() {
           <ScrollReveal delay={0.2}>
             <form
               onSubmit={handleSubmit}
-              className="bg-bg rounded-neu p-8 lg:p-10 shadow-neu"
+              className="bg-white rounded-card-xl p-8 lg:p-10 shadow-card-lg"
               noValidate
             >
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
@@ -108,9 +137,9 @@ export default function Contact() {
                     name="name"
                     value={formData.name}
                     onChange={handleChange}
-                    placeholder="John Doe"
+                    placeholder="Your full name"
                     required
-                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
+                    className="px-5 py-3 bg-bg rounded-xl border border-gray-200 text-sm text-text-primary placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all w-full"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
@@ -123,9 +152,9 @@ export default function Contact() {
                     name="email"
                     value={formData.email}
                     onChange={handleChange}
-                    placeholder="john@company.com"
+                    placeholder="your@email.com"
                     required
-                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
+                    className="px-5 py-3 bg-bg rounded-xl border border-gray-200 text-sm text-text-primary placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all w-full"
                   />
                 </div>
               </div>
@@ -141,101 +170,76 @@ export default function Contact() {
                     name="phone"
                     value={formData.phone}
                     onChange={handleChange}
-                    placeholder="07882 733546"
-                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
+                    placeholder="Your phone number"
+                    className="px-5 py-3 bg-bg rounded-xl border border-gray-200 text-sm text-text-primary placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all w-full"
                   />
                 </div>
                 <div className="flex flex-col gap-2">
-                  <label htmlFor="company" className="text-sm font-medium text-text-secondary">
-                    Company
+                  <label htmlFor="service" className="text-sm font-medium text-text-secondary">
+                    Service Required
                   </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
+                  <select
+                    id="service"
+                    name="service"
+                    value={formData.service}
                     onChange={handleChange}
-                    placeholder="Acme Inc."
-                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
-                  />
+                    className="px-5 py-3 bg-bg rounded-xl border border-gray-200 text-sm text-text-primary focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all w-full appearance-none cursor-pointer"
+                    style={{
+                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
+                      backgroundRepeat: "no-repeat",
+                      backgroundPosition: "right 16px center",
+                      paddingRight: "40px",
+                    }}
+                  >
+                    <option value="" disabled>Select a service</option>
+                    <option value="Website">Website</option>
+                    <option value="SEO">SEO</option>
+                    <option value="Business Profiling">Business Profiling</option>
+                    <option value="Business Registration">Business Registration</option>
+                    <option value="Company Registration">Company Registration</option>
+                    <option value="Business Banking">Business Banking</option>
+                    <option value="Business Loan">Business Loan</option>
+                    <option value="Personal Loan">Personal Loan</option>
+                    <option value="Other">Other</option>
+                  </select>
                 </div>
-              </div>
-
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="company" className="text-sm font-medium text-text-secondary">
-                    Company
-                  </label>
-                  <input
-                    type="text"
-                    id="company"
-                    name="company"
-                    value={formData.company}
-                    onChange={handleChange}
-                    placeholder="Acme Inc."
-                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
-                  />
-                </div>
-                {/* Budget removed — enquiries are welcome without selecting a range */}
               </div>
 
               <div className="flex flex-col gap-2 mb-6">
-                <label htmlFor="service" className="text-sm font-medium text-text-secondary">
-                  Service Interested In
+                <label htmlFor="business" className="text-sm font-medium text-text-secondary">
+                  Business Name
                 </label>
-                <select
-                  id="service"
-                  name="service"
-                  value={formData.service}
+                <input
+                  type="text"
+                  id="business"
+                  name="business"
+                  value={formData.business}
                   onChange={handleChange}
-                  className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full appearance-none cursor-pointer"
-                  style={{
-                    backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
-                    backgroundRepeat: "no-repeat",
-                    backgroundPosition: "right 16px center",
-                    paddingRight: "40px",
-                  }}
-                >
-                  <option value="" disabled>What do you need?</option>
-                  <option value="website">Website Development</option>
-                  <option value="web-app">Web Application</option>
-                  <option value="mobile">Mobile App</option>
-                  <option value="uiux">UI/UX Design</option>
-                  <option value="seo">SEO Optimization</option>
-                  <option value="social">Social Media Marketing</option>
-                  <option value="branding">Brand Identity</option>
-                  <option value="business-profiling">Business Profiling</option>
-                  <option value="business-registration">Business Registration</option>
-                  <option value="company-registration">Company Registration</option>
-                  <option value="business-banking">Business Banking</option>
-                  <option value="business-loan">Business Loan</option>
-                  <option value="personal-loan">Personal Loan</option>
-                  <option value="ai">AI Automation</option>
-                  <option value="ecommerce">E-commerce</option>
-                  <option value="other">Other / Not Sure</option>
-                </select>
+                  placeholder="Your business name"
+                  className="px-5 py-3 bg-bg rounded-xl border border-gray-200 text-sm text-text-primary placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all w-full"
+                />
               </div>
 
               <div className="flex flex-col gap-2 mb-6">
                 <label htmlFor="message" className="text-sm font-medium text-text-secondary">
-                  Project Details *
+                  Message *
                 </label>
                 <textarea
                   id="message"
                   name="message"
                   value={formData.message}
                   onChange={handleChange}
-                  placeholder="Tell us about your project, goals, and timeline..."
+                  placeholder="Tell us about your needs..."
                   required
                   rows={5}
-                  className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full resize-y min-h-[140px]"
+                  className="px-5 py-3 bg-bg rounded-xl border border-gray-200 text-sm text-text-primary placeholder:text-gray-400 focus:outline-none focus:border-accent focus:ring-2 focus:ring-accent/20 transition-all w-full resize-y min-h-[120px]"
                 />
               </div>
 
               <button
                 type="submit"
                 disabled={status === "loading"}
-                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-white text-base font-semibold rounded-full shadow-accent hover:bg-accent-hover hover:shadow-accent hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300"
+                className="w-full inline-flex items-center justify-center gap-2 px-8 py-4 bg-accent text-text-primary text-base font-semibold rounded-xl shadow-accent hover:bg-accent-hover hover:-translate-y-0.5 active:translate-y-0 disabled:opacity-70 disabled:cursor-not-allowed transition-all duration-300"
               >
                 {status === "loading" ? (
                   <>
@@ -244,13 +248,11 @@ export default function Contact() {
                   </>
                 ) : (
                   <>
-                    Send Message
+                    Send Enquiry on WhatsApp
                     <Send className="w-4 h-4" />
                   </>
                 )}
               </button>
-
-              {/* After submit we open WhatsApp directly; no preview or email option shown */}
             </form>
           </ScrollReveal>
         </div>
@@ -260,7 +262,7 @@ export default function Contact() {
       <AnimatePresence>
         {toast && (
           <motion.div
-            className="fixed bottom-8 right-8 z-[9999] flex items-center gap-3 bg-bg rounded-2xl px-6 py-4 shadow-neu-hover font-medium text-sm"
+            className="fixed bottom-8 right-8 z-[9999] flex items-center gap-3 bg-white rounded-2xl px-6 py-4 shadow-card-lg font-medium text-sm"
             initial={{ y: 120, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 120, opacity: 0 }}
