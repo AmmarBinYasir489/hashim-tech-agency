@@ -112,7 +112,7 @@ export default function Hero() {
 
               {/* Floating card - phone */}
               <motion.div
-                className="absolute -right-6 -bottom-8 w-[140px] h-[280px] rounded-card-xl bg-white shadow-card-lg overflow-hidden"
+                className="absolute -right-6 -bottom-8 w-[140px] h-[280px] rounded-card-xl bg-white shadow-card-lg overflow-hidden hidden sm:block"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
                 transition={{ duration: 0.8, delay: 0.4 }}
