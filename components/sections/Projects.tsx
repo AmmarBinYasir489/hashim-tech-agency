@@ -20,6 +20,7 @@ interface Project {
   alt: string;
   url?: string;
   featured: boolean;
+  darkBg?: boolean;
 }
 
 const fallbackProjects: Project[] = [
@@ -35,6 +36,7 @@ const fallbackProjects: Project[] = [
     tech: ["Logo Design", "Favicon", "Branding", "WordPress"],
     url: "https://synergytherapyrooms.co.uk/",
     services: ["Logo", "Favicon", "Instagram Logo", "Website"],
+    darkBg: true,
   },
   {
     id: "2",
@@ -109,9 +111,9 @@ export default function Projects() {
                 }`}
               >
                 <div
-                  className={`relative overflow-hidden bg-white/5 flex items-center justify-center ${
-                    project.featured ? "h-[250px] md:h-auto md:min-h-[380px]" : "aspect-[16/10]"
-                  }`}
+                  className={`relative overflow-hidden flex items-center justify-center ${
+                    project.darkBg ? "bg-[#1a1a2e]" : "bg-white/5"
+                  } ${project.featured ? "h-[250px] md:h-auto md:min-h-[380px]" : "aspect-[16/10]"}`}
                 >
                   <Image
                     src={project.image}

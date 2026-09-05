@@ -30,6 +30,7 @@ export interface Project {
   alt: string;
   url?: string;
   featured: boolean;
+  darkBg?: boolean;
 }
 
 const DEFAULT_TESTIMONIALS: Testimonial[] = [
@@ -105,6 +106,7 @@ const DEFAULT_PROJECTS: Project[] = [
     tech: ["Logo Design", "Favicon", "Branding", "WordPress"],
     url: "https://synergytherapyrooms.co.uk/",
     services: ["Logo", "Favicon", "Instagram Logo", "Website"],
+    darkBg: true,
   },
   {
     id: "2",
