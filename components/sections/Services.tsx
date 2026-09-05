@@ -21,48 +21,43 @@ import StaggerContainer, { StaggerItem } from "../ui/StaggerContainer";
 const servicesList = [
   {
     icon: Globe,
-    title: "Website Development",
-    desc: "Custom-built, performant websites engineered for speed, SEO, and conversion. No templates — every pixel is intentional.",
-  },
-  {
-    icon: LayoutDashboard,
-    title: "Web Applications",
-    desc: "Complex, data-driven web apps with real-time features, intuitive interfaces, and scalable architecture.",
-  },
-  {
-    icon: Smartphone,
-    title: "Mobile App Development",
-    desc: "Native and cross-platform mobile apps that feel fast, look stunning, and keep users coming back.",
+    title: "Website Design & Development",
+    desc: "Modern, responsive, conversion-focused websites built around your business goals.",
   },
   {
     icon: Search,
-    title: "SEO Optimization",
-    desc: "Technical SEO, content strategy, and authority building that gets you ranking — and staying — on page one.",
+    title: "SEO",
+    desc: "Improve visibility and attract organic traffic with technical, local and content SEO.",
   },
   {
-    icon: Megaphone,
-    title: "Social Media Marketing",
-    desc: "Strategic social campaigns that build brand awareness, drive engagement, and convert followers into customers.",
+    icon: LayoutDashboard,
+    title: "Business Profiling",
+    desc: "Create a professional business profile that builds credibility and helps customers find you.",
   },
   {
-    icon: Palette,
-    title: "Brand Identity",
-    desc: "Logos, color systems, typography, and brand guides that give your business a cohesive, memorable identity.",
+    icon: Globe,
+    title: "Business Registration",
+    desc: "Support setting up your business legally and correctly, including documentation guidance.",
   },
   {
-    icon: Figma,
-    title: "UI/UX Design",
-    desc: "Research-driven design that balances beauty with usability. Wireframes, prototypes, and polished interfaces.",
-  },
-  {
-    icon: BrainCircuit,
-    title: "AI Automation",
-    desc: "Integrate AI into your workflows — chatbots, content generation, data analysis, and intelligent automation.",
+    icon: Globe,
+    title: "Company Registration",
+    desc: "Professional guidance for company formation and registration processes.",
   },
   {
     icon: ShoppingBag,
-    title: "E-commerce Solutions",
-    desc: "High-converting online stores with seamless checkout, inventory management, and payment integrations.",
+    title: "Business Banking",
+    desc: "Guidance on selecting and setting up banking solutions suitable for your business needs.",
+  },
+  {
+    icon: Megaphone,
+    title: "Business Loans",
+    desc: "Explore funding options tailored to your business requirements (subject to eligibility).",
+  },
+  {
+    icon: Smartphone,
+    title: "Personal Loans",
+    desc: "Support and guidance for personal finance options with transparent, compliant messaging.",
   },
 ];
 

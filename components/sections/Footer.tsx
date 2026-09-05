@@ -53,11 +53,10 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr_1.2fr] gap-10 lg:gap-12 mb-16">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="flex items-center gap-2 font-bold text-lg">
-              <div className="w-9 h-9 bg-accent rounded-[10px] flex items-center justify-center text-white font-bold text-sm shadow-accent">
-                HT
+            <Link href="/" className="flex items-center gap-3 font-bold text-lg">
+              <div className="w-12 h-12 rounded-[10px] overflow-hidden">
+                <img src="/logo.png" alt="Hashim Tech" className="w-full h-full object-cover" />
               </div>
-              <span>Hashim Tech</span>
             </Link>
             <p className="text-sm text-text-secondary leading-relaxed mt-4 max-w-[300px]">
               A modern technology agency crafting digital products that drive business growth. We turn ambitious ideas into exceptional realities.

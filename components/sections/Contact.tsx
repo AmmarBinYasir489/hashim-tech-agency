@@ -16,6 +16,7 @@ export default function Contact() {
   const [formData, setFormData] = useState({
     name: "",
     email: "",
+    phone: "",
     company: "",
     service: "",
     message: "",
@@ -45,7 +46,7 @@ export default function Contact() {
     if (!message.trim()) { showToast("Please describe your project.", true); return; }
     // prepare a WhatsApp-friendly message (do not include user's email) and open WhatsApp directly
     setStatus("loading");
-    const fullMessage = `Hello, my name is ${name}.\nCompany: ${formData.company || "(not provided)"}\nService: ${formData.service || "(not specified)"}\n\nMessage:\n${message}`;
+    const fullMessage = `Hello Hashim Tech,\n\nI'd like to enquire about your ${formData.service || "service"} service.\n\nName: ${name}\nBusiness: ${formData.company || "(not provided)"}\nPhone: ${formData.phone || "(not provided)"}\n\nMessage:\n${message}`;
     setTimeout(() => {
       setStatus("success");
       const waUrl = `https://wa.me/447882733546?text=${encodeURIComponent(fullMessage)}`;
@@ -124,6 +125,37 @@ export default function Contact() {
                     onChange={handleChange}
                     placeholder="john@company.com"
                     required
+                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
+                  />
+                </div>
+              </div>
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mb-6">
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="phone" className="text-sm font-medium text-text-secondary">
+                    Phone Number
+                  </label>
+                  <input
+                    type="tel"
+                    id="phone"
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleChange}
+                    placeholder="07882 733546"
+                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
+                  />
+                </div>
+                <div className="flex flex-col gap-2">
+                  <label htmlFor="company" className="text-sm font-medium text-text-secondary">
+                    Company
+                  </label>
+                  <input
+                    type="text"
+                    id="company"
+                    name="company"
+                    value={formData.company}
+                    onChange={handleChange}
+                    placeholder="Acme Inc."
                     className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
                   />
                 </div>
