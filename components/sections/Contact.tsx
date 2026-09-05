@@ -6,8 +6,8 @@ import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } f
 import ScrollReveal from "../ui/ScrollReveal";
 
 const contactDetails = [
-  { icon: Mail, label: "Email", value: "hello@hashimtech.com" },
-  { icon: Phone, label: "Phone", value: "+1 (555) 123-4567" },
+  { icon: Mail, label: "Email", value: "hashimtechsolutions@gmail.com" },
+  { icon: Phone, label: "Phone", value: "7882733546" },
   { icon: MapPin, label: "Location", value: "Remote-first, worldwide" },
   { icon: Clock, label: "Response Time", value: "Within 24 hours" },
 ];
@@ -22,6 +22,7 @@ export default function Contact() {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
+  const [preparedMessage, setPreparedMessage] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; isError: boolean } | null>(null);
 
   const handleChange = (
@@ -45,13 +46,25 @@ export default function Contact() {
     }
     if (!message.trim()) { showToast("Please describe your project.", true); return; }
 
+    // prepare a WhatsApp + email friendly message and show actions
     setStatus("loading");
+    const phone = "7882733546"; // number to receive WhatsApp message
+    const fullMessage = `Hello, my name is ${name}.\nCompany: ${formData.company || "(not provided)"}\nService: ${formData.service || "(not specified)"}\nBudget: ${formData.budget || "(not specified)"}\n\nMessage:\n${message}\n\nContact email: ${email}`;
     setTimeout(() => {
+      setPreparedMessage(fullMessage);
       setStatus("success");
-      showToast("Message sent successfully! We'll get back to you within 24 hours.");
-      setFormData({ name: "", email: "", company: "", budget: "", service: "", message: "" });
-      setStatus("idle");
-    }, 1500);
+      showToast("Message prepared. Open WhatsApp or send an email to continue.");
+    }, 800);
+  };
+
+  const handleCopy = async () => {
+    if (!preparedMessage) return;
+    try {
+      await navigator.clipboard.writeText(preparedMessage);
+      showToast("Message copied to clipboard.");
+    } catch (e) {
+      showToast("Unable to copy message.", true);
+    }
   };
 
   return (
@@ -194,6 +207,12 @@ export default function Contact() {
                   <option value="seo">SEO Optimization</option>
                   <option value="social">Social Media Marketing</option>
                   <option value="branding">Brand Identity</option>
+                  <option value="business-profiling">Business Profiling</option>
+                  <option value="business-registration">Business Registration</option>
+                  <option value="company-registration">Company Registration</option>
+                  <option value="business-banking">Business Banking</option>
+                  <option value="business-loan">Business Loan</option>
+                  <option value="personal-loan">Personal Loan</option>
                   <option value="ai">AI Automation</option>
                   <option value="ecommerce">E-commerce</option>
                   <option value="other">Other / Not Sure</option>
@@ -233,6 +252,39 @@ export default function Contact() {
                   </>
                 )}
               </button>
+
+              {status === "success" && preparedMessage && (
+                <div className="mt-6 bg-bg-light p-4 rounded-md border border-black/5">
+                  <div className="text-sm text-text-secondary mb-2">Your prepared message</div>
+                  <textarea readOnly value={preparedMessage} className="w-full min-h-[120px] p-3 rounded-md text-sm text-text-primary bg-white border border-black/5" />
+
+                  <div className="flex gap-3 mt-3">
+                    <a
+                      href={`https://wa.me/7882733546?text=${encodeURIComponent(preparedMessage)}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-full font-semibold"
+                    >
+                      Open WhatsApp
+                    </a>
+
+                    <a
+                      href={`mailto:hashimtechsolutions@gmail.com?subject=${encodeURIComponent("New booking from " + formData.name)}&body=${encodeURIComponent(preparedMessage)}`}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-full font-semibold"
+                    >
+                      Send Email
+                    </a>
+
+                    <button
+                      type="button"
+                      onClick={handleCopy}
+                      className="inline-flex items-center gap-2 px-4 py-2 bg-bg text-text-primary rounded-full border border-black/5"
+                    >
+                      Copy
+                    </button>
+                  </div>
+                </div>
+              )}
             </form>
           </ScrollReveal>
         </div>
