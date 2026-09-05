@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
+import Link from "next/link";
 import SectionLabel from "../ui/SectionLabel";
 import ScrollReveal from "../ui/ScrollReveal";
 import StaggerContainer, { StaggerItem } from "../ui/StaggerContainer";
