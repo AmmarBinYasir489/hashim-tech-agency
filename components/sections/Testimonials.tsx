@@ -9,6 +9,12 @@ import StaggerContainer, { StaggerItem } from "../ui/StaggerContainer";
 
 const testimonialsData = [
   {
+    quote: "Excellent work — Hashim Tech delivered a beautiful logo with a quick turnaround and took on board my preferences. Highly recommended.",
+    name: "Mam Naheeda",
+    role: "Owner, Synergy Therapy Rooms",
+    avatar: "https://picsum.photos/seed/avatar-naheeda/88/88.jpg",
+  },
+  {
     quote: "Hashim Tech transformed our outdated platform into something our users actually love. The attention to detail in both design and performance was remarkable. Our conversion rate jumped 35% within two months of launch.",
     name: "Sarah Chen",
     role: "CEO, Meridian Finance",
