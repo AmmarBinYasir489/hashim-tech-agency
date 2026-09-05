@@ -52,7 +52,7 @@ export default function Contact() {
       const waUrl = `https://wa.me/447882733546?text=${encodeURIComponent(fullMessage)}`;
       window.open(waUrl, "_blank");
       showToast("Opening WhatsApp...");
-      setFormData({ name: "", email: "", company: "", service: "", message: "" });
+      setFormData({ name: "", email: "", phone: "", company: "", service: "", message: "" });
     }, 600);
   };
 
