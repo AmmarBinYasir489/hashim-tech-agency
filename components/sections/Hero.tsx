@@ -26,72 +26,69 @@ export default function Hero() {
       <FloatingShapes />
 
       <div className="container mx-auto px-6 relative z-10">
-        <div className="max-w-[780px] mx-auto text-center">
-          {/* Badge */}
-          <motion.div
-            className="inline-flex items-center gap-2 px-5 py-2.5 bg-bg rounded-full shadow-neu-in-sm text-sm text-text-secondary mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <span className="relative w-2 h-2">
-              <span className="absolute inset-0 bg-success rounded-full" />
-              <span className="absolute inset-[-3px] rounded-full border border-success animate-ping" />
-            </span>
-            Available for new projects
-          </motion.div>
-
-          {/* Title */}
-          <motion.h1
-            className="text-5xl sm:text-6xl lg:text-[4.5rem] font-bold leading-[1.05] tracking-tight mb-6"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.1, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            We build digital
-            <br />
-            products that
-            <br />
-            <span
-              className="bg-gradient-to-r from-accent via-[#a78bfa] to-accent bg-[length:200%_auto] bg-clip-text text-transparent"
-              style={{ animation: "gradient-shift 4s ease-in-out infinite" }}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+          {/* Left - Text */}
+          <div className="max-w-[640px]">
+            <motion.div
+              className="inline-flex items-center gap-2 px-4 py-2.5 bg-[#F7F9FC] rounded-full text-sm text-[#0B2854] mb-6 font-medium shadow-sm"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8 }}
             >
-              move businesses
-            </span>
-          </motion.h1>
+              DIGITAL &amp; BUSINESS SOLUTIONS
+            </motion.div>
 
-          {/* Description */}
-          <motion.p
-            className="text-lg sm:text-xl text-text-secondary leading-snug max-w-[560px] mx-auto mb-10"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            Hashim Tech is a modern technology agency crafting high-performance websites,
-            applications, and digital experiences for startups and enterprises.
-          </motion.p>
+            <motion.h1
+              className="text-4xl sm:text-5xl lg:text-5xl font-extrabold leading-tight tracking-tight mb-4 text-[#06152D]"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.1 }}
+            >
+              We Build Your Digital Presence.
+              <br />
+              <span className="text-[#F5B51B]">We Help Your Business Grow.</span>
+            </motion.h1>
 
-          {/* Actions */}
-          <motion.div
-            className="flex flex-col sm:flex-row items-center justify-center gap-4"
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.3, ease: [0.25, 0.46, 0.45, 0.94] }}
-          >
-            <Link
-              href="#contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-accent text-white text-base font-semibold rounded-full shadow-accent hover:bg-accent-hover hover:shadow-accent hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+            <motion.p
+              className="text-lg text-[#0B2854] leading-relaxed mb-8"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2 }}
             >
-              Start Your Project
-              <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />
-            </Link>
-            <Link
-              href="#projects"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-bg text-text-primary text-base font-semibold rounded-full shadow-neu-sm hover:shadow-neu hover:-translate-y-0.5 active:shadow-neu-in-sm active:translate-y-0 transition-all duration-300"
+              From websites and SEO to business registration, banking and finance support — Hashim Tech helps you build, launch and grow with confidence.
+            </motion.p>
+
+            <motion.div
+              className="flex flex-col sm:flex-row gap-4"
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.3 }}
             >
-              View Our Work
-            </Link>
-          </motion.div>
+              <Link href="#contact" className="inline-flex items-center gap-2 px-6 py-3 bg-[#F5B51B] text-[#06152D] rounded-full font-semibold">
+                Get Started
+              </Link>
+              <Link href="#services" className="inline-flex items-center gap-2 px-6 py-3 bg-transparent border border-[#0B2854] text-[#0B2854] rounded-full font-semibold">
+                Explore Services
+              </Link>
+            </motion.div>
+          </div>
+
+          {/* Right - Visual */}
+          <div className="flex items-center justify-center">
+            <div className="relative w-full max-w-[560px]">
+              <div className="rounded-[24px] bg-white shadow-lg p-6">
+                <div className="rounded-[16px] overflow-hidden bg-[#06152D] h-[280px] md:h-[340px] flex items-center justify-center">
+                  <img src="https://images.unsplash.com/photo-1521737604893-d14cc237f11d?w=1200&q=80&auto=format&fit=crop" alt="dashboard" className="object-cover w-full h-full opacity-90" />
+                </div>
+              </div>
+              <div className="absolute -right-8 -bottom-10 w-[160px] h-[320px] rounded-[24px] bg-white shadow-md overflow-hidden transform rotate-6">
+                <img src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?w=800&q=60&auto=format&fit=crop" alt="phone" className="w-full h-full object-cover" />
+              </div>
+              <div className="absolute -left-8 -top-12 w-[160px] h-[160px] rounded-[24px] bg-white shadow-md overflow-hidden">
+                <img src="https://images.unsplash.com/photo-1526378721410-9f6f0b4d5d2f?w=800&q=60&auto=format&fit=crop" alt="analytics" className="w-full h-full object-cover" />
+              </div>
+            </div>
+          </div>
         </div>
       </div>
 

@@ -50,8 +50,8 @@ export default function Navbar() {
       <motion.nav
         className={`fixed top-0 left-0 right-0 z-[1000] transition-all duration-300 ${
           scrolled
-            ? "bg-bg/85 backdrop-blur-[20px] saturate-[1.5] shadow-[0_1px_0_rgba(0,0,0,0.06),0_4px_20px_rgba(0,0,0,0.06)]"
-            : ""
+            ? "bg-[#06152D]/95 backdrop-blur-[6px] saturate-[1.05] shadow-[0_6px_20px_rgba(2,6,23,0.5)]"
+            : "bg-transparent"
         }`}
         initial={{ y: -100 }}
         animate={{ y: 0 }}
@@ -72,15 +72,15 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <div className="hidden lg:flex items-center gap-1 bg-bg p-1 rounded-full shadow-neu-in-sm">
+          <div className="hidden lg:flex items-center gap-1 bg-transparent p-1 rounded-full">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 href={link.href}
                 className={`px-5 py-2 rounded-full text-sm font-medium transition-all duration-150 ${
                   activeSection === link.href
-                    ? "bg-bg-light shadow-neu-sm font-semibold text-accent"
-                    : "text-text-secondary hover:text-text-primary hover:bg-bg-light"
+                    ? "bg-[#08233f] font-semibold text-[#F5B51B]"
+                    : "text-white/85 hover:text-white"
                 }`}
               >
                 {link.label}
@@ -92,9 +92,9 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-full shadow-accent hover:bg-accent-hover hover:shadow-[0_12px_40px_rgba(212,160,23,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-[#F5B51B] text-[#06152D] text-sm font-semibold rounded-full shadow-md hover:brightness-95 transition-all duration-200"
             >
-              Start a Project
+              Get Started
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>
