@@ -63,13 +63,10 @@ export default function Navbar() {
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 z-10">
-            <div className="w-11 h-11 rounded-xl overflow-hidden flex-shrink-0">
-              <Image src="/logo.png" alt="Hashim Tech" width={44} height={44} className="object-cover" />
+          <Link href="/" className="flex items-center z-10">
+            <div className="w-14 h-14 rounded-xl overflow-hidden flex-shrink-0">
+              <Image src="/logo.png" alt="Hashim Tech" width={56} height={56} className="object-contain" />
             </div>
-            <span className={`text-lg font-bold tracking-tight transition-colors ${scrolled ? "text-text-primary" : "text-text-primary"}`}>
-              Hashim Tech
-            </span>
           </Link>
 
           {/* Desktop Nav */}
@@ -136,11 +133,10 @@ export default function Navbar() {
             transition={{ duration: 0.4, ease: [0.34, 1.56, 0.64, 1] }}
           >
             <div className="flex items-center justify-between px-8 py-6 border-b border-gray-100">
-              <Link href="/" className="flex items-center gap-3">
-                <div className="w-10 h-10 rounded-xl overflow-hidden flex-shrink-0">
-                  <Image src="/logo.png" alt="Hashim Tech" width={40} height={40} className="object-cover" />
+              <Link href="/" className="flex items-center">
+                <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
+                  <Image src="/logo.png" alt="Hashim Tech" width={48} height={48} className="object-contain" />
                 </div>
-                <span className="text-lg font-bold">Hashim Tech</span>
               </Link>
               <button
                 onClick={() => setMobileOpen(false)}
