@@ -56,21 +56,10 @@ export default function Process() {
           <StaggerContainer className="flex flex-col" staggerDelay={0.15}>
             {steps.map((step) => (
               <StaggerItem key={step.number}>
-                <motion.div
-                  className="group flex gap-6 md:gap-8 pb-12 last:pb-0 relative"
-                  whileHover="hover"
-                >
-                  <motion.div
-                    className="relative z-10 w-[72px] h-[72px] md:w-16 md:h-16 flex-shrink-0 rounded-full bg-bg shadow-neu flex items-center justify-center font-mono text-sm font-semibold text-accent border-2 border-transparent transition-all duration-300 group-hover:shadow-neu-hover group-hover:scale-110"
-                    variants={{
-                      hover: {
-                        borderColor: "rgba(14,165,233,0.3)",
-                        boxShadow: "15px 15px 40px #b0b0b0, -15px -15px 40px #ffffff, 0 0 30px rgba(14,165,233,0.22)",
-                      },
-                    }}
-                  >
+                <div className="group flex gap-6 md:gap-8 pb-12 last:pb-0 relative">
+                  <div className="relative z-10 w-[72px] h-[72px] md:w-16 md:h-16 flex-shrink-0 rounded-full bg-bg shadow-neu flex items-center justify-center font-mono text-sm font-semibold text-accent border-2 border-transparent transition-all duration-200 group-hover:scale-105">
                     {step.number}
-                  </motion.div>
+                  </div>
 
                   <div className="pt-3 md:pt-4">
                     <h3 className="text-xl font-semibold mb-2 tracking-tight">

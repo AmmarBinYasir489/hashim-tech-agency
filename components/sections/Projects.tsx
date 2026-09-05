@@ -107,7 +107,7 @@ export default function Projects() {
               className={project.featured ? "md:col-span-2" : ""}
             >
               <motion.article
-                className={`group bg-bg rounded-neu overflow-hidden shadow-neu transition-all duration-300 hover:shadow-neu-hover hover:-translate-y-1 ${
+                className={`group bg-bg rounded-neu overflow-hidden shadow-neu-sm transition-all duration-200 hover:translate-y-0.5 ${
                   project.featured ? "grid md:grid-cols-[1.2fr_1fr]" : ""
                 }`}
               >
@@ -129,7 +129,7 @@ export default function Projects() {
                 <div className="p-8 lg:p-10 flex flex-col justify-center">
                   <span className="font-mono text-xs text-accent uppercase tracking-[0.1em] mb-4">
                     {project.category}
-                  </span>
+                  <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent opacity-0 group-hover:opacity-70 transition-opacity duration-200" />
                   <h3
                     className={`font-bold leading-tight tracking-tight mb-4 ${
                       project.featured ? "text-2xl lg:text-3xl" : "text-xl lg:text-2xl"

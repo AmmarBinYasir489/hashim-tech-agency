@@ -80,7 +80,7 @@ export default function Hero() {
           >
             <Link
               href="#contact"
-              className="group inline-flex items-center gap-2 px-8 py-4 bg-accent text-white text-base font-semibold rounded-full shadow-accent hover:bg-accent-hover hover:shadow-[0_12px_40px_rgba(14,165,233,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+              className="group inline-flex items-center gap-2 px-8 py-4 bg-accent text-white text-base font-semibold rounded-full shadow-accent hover:bg-accent-hover hover:shadow-accent hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
             >
               Start Your Project
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform duration-300" />

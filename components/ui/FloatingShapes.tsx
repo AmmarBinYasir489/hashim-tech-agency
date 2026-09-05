@@ -10,7 +10,7 @@ export default function FloatingShapes() {
         style={{
           width: 300,
           height: 300,
-          background: "radial-gradient(circle, rgba(14,165,233,0.08) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(212,160,23,0.04) 0%, transparent 70%)",
           top: -100,
           right: -80,
         }}
@@ -26,7 +26,7 @@ export default function FloatingShapes() {
         style={{
           width: 200,
           height: 200,
-          background: "radial-gradient(circle, rgba(14,165,233,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(212,160,23,0.03) 0%, transparent 70%)",
           bottom: -60,
           left: -40,
         }}
@@ -42,7 +42,7 @@ export default function FloatingShapes() {
         style={{
           width: 150,
           height: 150,
-          background: "radial-gradient(circle, rgba(255,152,0,0.06) 0%, transparent 70%)",
+          background: "radial-gradient(circle, rgba(212,160,23,0.03) 0%, transparent 70%)",
           top: "40%",
           right: "10%",
         }}
