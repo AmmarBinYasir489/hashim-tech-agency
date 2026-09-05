@@ -7,7 +7,7 @@ import ScrollReveal from "../ui/ScrollReveal";
 
 const contactDetails = [
   { icon: Mail, label: "Email", value: "hashimtechsolutions@gmail.com" },
-  { icon: Phone, label: "Phone", value: "7882733546" },
+  { icon: Phone, label: "Phone", value: "+44 7882 733546" },
   { icon: MapPin, label: "Location", value: "Remote-first, worldwide" },
   { icon: Clock, label: "Response Time", value: "Within 24 hours" },
 ];
@@ -17,7 +17,6 @@ export default function Contact() {
     name: "",
     email: "",
     company: "",
-    budget: "",
     service: "",
     message: "",
   });
@@ -49,7 +48,7 @@ export default function Contact() {
     // prepare a WhatsApp + email friendly message and show actions
     setStatus("loading");
     const phone = "7882733546"; // number to receive WhatsApp message
-    const fullMessage = `Hello, my name is ${name}.\nCompany: ${formData.company || "(not provided)"}\nService: ${formData.service || "(not specified)"}\nBudget: ${formData.budget || "(not specified)"}\n\nMessage:\n${message}\n\nContact email: ${email}`;
+    const fullMessage = `Hello, my name is ${name}.\nCompany: ${formData.company || "(not provided)"}\nService: ${formData.service || "(not specified)"}\n\nMessage:\n${message}\n\nContact email: ${email}`;
     setTimeout(() => {
       setPreparedMessage(fullMessage);
       setStatus("success");
@@ -156,30 +155,7 @@ export default function Contact() {
                     className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary placeholder:text-text-tertiary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full"
                   />
                 </div>
-                <div className="flex flex-col gap-2">
-                  <label htmlFor="budget" className="text-sm font-medium text-text-secondary">
-                    Budget Range
-                  </label>
-                  <select
-                    id="budget"
-                    name="budget"
-                    value={formData.budget}
-                    onChange={handleChange}
-                    className="px-5 py-3 bg-bg rounded-xl shadow-neu-in text-sm text-text-primary focus:outline-none focus:shadow-neu-in-deep transition-shadow w-full appearance-none cursor-pointer"
-                    style={{
-                      backgroundImage: `url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 24 24'%3E%3Cpath fill='%23888' d='M7 10l5 5 5-5z'/%3E%3C/svg%3E")`,
-                      backgroundRepeat: "no-repeat",
-                      backgroundPosition: "right 16px center",
-                      paddingRight: "40px",
-                    }}
-                  >
-                    <option value="" disabled>Select a range</option>
-                    <option value="5k-10k">$5,000 – $10,000</option>
-                    <option value="10k-25k">$10,000 – $25,000</option>
-                    <option value="25k-50k">$25,000 – $50,000</option>
-                    <option value="50k+">$50,000+</option>
-                  </select>
-                </div>
+                {/* Budget removed — enquiries are welcome without selecting a range */}
               </div>
 
               <div className="flex flex-col gap-2 mb-6">
@@ -254,33 +230,31 @@ export default function Contact() {
               </button>
 
               {status === "success" && preparedMessage && (
-                <div className="mt-6 bg-bg-light p-4 rounded-md border border-black/5">
-                  <div className="text-sm text-text-secondary mb-2">Your prepared message</div>
-                  <textarea readOnly value={preparedMessage} className="w-full min-h-[120px] p-3 rounded-md text-sm text-text-primary bg-white border border-black/5" />
-
-                  <div className="flex gap-3 mt-3">
-                    <a
-                      href={`https://wa.me/7882733546?text=${encodeURIComponent(preparedMessage)}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
+                <div className="mt-6 p-2 rounded-md">
+                  <div className="text-sm text-text-secondary mb-2">Send your enquiry</div>
+                  <div className="flex gap-3 flex-wrap">
+                    <button
+                      type="button"
+                      onClick={() => window.open(`https://wa.me/447882733546?text=${encodeURIComponent(preparedMessage)}`, "_blank")}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-full font-semibold"
                     >
-                      Open WhatsApp
-                    </a>
+                      Send via WhatsApp
+                    </button>
 
-                    <a
-                      href={`mailto:hashimtechsolutions@gmail.com?subject=${encodeURIComponent("New booking from " + formData.name)}&body=${encodeURIComponent(preparedMessage)}`}
+                    <button
+                      type="button"
+                      onClick={() => window.location.href = `mailto:hashimtechsolutions@gmail.com?subject=${encodeURIComponent("New booking from " + formData.name)}&body=${encodeURIComponent(preparedMessage)}`}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-full font-semibold"
                     >
                       Send Email
-                    </a>
+                    </button>
 
                     <button
                       type="button"
                       onClick={handleCopy}
                       className="inline-flex items-center gap-2 px-4 py-2 bg-bg text-text-primary rounded-full border border-black/5"
                     >
-                      Copy
+                      Copy message
                     </button>
                   </div>
                 </div>
