@@ -69,7 +69,7 @@ export default function Process() {
                       {step.desc}
                     </p>
                   </div>
-                </motion.div>
+                </div>
               </StaggerItem>
             ))}
           </StaggerContainer>
