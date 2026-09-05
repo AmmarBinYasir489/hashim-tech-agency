@@ -2,7 +2,6 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
-import logoImg from "../../logo/logo.png";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -68,7 +67,7 @@ export default function Navbar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-3 font-bold text-lg tracking-tight z-10">
             <div className="w-9 h-9 rounded-[10px] overflow-hidden flex-shrink-0">
-              <Image src={logoImg} alt="Hashim Tech" width={36} height={36} className="object-cover" />
+              <Image src="/logo.png" alt="Hashim Tech" width={36} height={36} className="object-cover" />
             </div>
             <span className="font-extrabold text-xl tracking-tight hidden sm:inline text-text-primary">
               Hashim<span className="text-accent"> Tech</span>
@@ -141,7 +140,7 @@ export default function Navbar() {
             <div className="flex items-center justify-between px-8 py-6 border-b border-black/5">
               <Link href="/" className="flex items-center gap-3 font-bold">
                 <div className="w-9 h-9 rounded-[10px] overflow-hidden flex-shrink-0">
-                  <Image src={logoImg} alt="Hashim Tech" width={36} height={36} className="object-cover" />
+                  <Image src="/logo.png" alt="Hashim Tech" width={36} height={36} className="object-cover" />
                 </div>
                 <span className="font-extrabold text-lg text-text-primary">
                   Hashim<span className="text-accent"> Tech</span>
