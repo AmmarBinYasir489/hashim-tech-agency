@@ -21,7 +21,6 @@ export default function Contact() {
     message: "",
   });
   const [status, setStatus] = useState<"idle" | "loading" | "success" | "error">("idle");
-  const [preparedMessage, setPreparedMessage] = useState<string | null>(null);
   const [toast, setToast] = useState<{ message: string; isError: boolean } | null>(null);
 
   const handleChange = (
@@ -44,26 +43,16 @@ export default function Contact() {
       showToast("Please enter a valid email address.", true); return;
     }
     if (!message.trim()) { showToast("Please describe your project.", true); return; }
-
-    // prepare a WhatsApp + email friendly message and show actions
+    // prepare a WhatsApp-friendly message (do not include user's email) and open WhatsApp directly
     setStatus("loading");
-    const phone = "7882733546"; // number to receive WhatsApp message
-    const fullMessage = `Hello, my name is ${name}.\nCompany: ${formData.company || "(not provided)"}\nService: ${formData.service || "(not specified)"}\n\nMessage:\n${message}\n\nContact email: ${email}`;
+    const fullMessage = `Hello, my name is ${name}.\nCompany: ${formData.company || "(not provided)"}\nService: ${formData.service || "(not specified)"}\n\nMessage:\n${message}`;
     setTimeout(() => {
-      setPreparedMessage(fullMessage);
       setStatus("success");
-      showToast("Message prepared. Open WhatsApp or send an email to continue.");
-    }, 800);
-  };
-
-  const handleCopy = async () => {
-    if (!preparedMessage) return;
-    try {
-      await navigator.clipboard.writeText(preparedMessage);
-      showToast("Message copied to clipboard.");
-    } catch (e) {
-      showToast("Unable to copy message.", true);
-    }
+      const waUrl = `https://wa.me/447882733546?text=${encodeURIComponent(fullMessage)}`;
+      window.open(waUrl, "_blank");
+      showToast("Opening WhatsApp...");
+      setFormData({ name: "", email: "", company: "", service: "", message: "" });
+    }, 600);
   };
 
   return (
@@ -229,36 +218,7 @@ export default function Contact() {
                 )}
               </button>
 
-              {status === "success" && preparedMessage && (
-                <div className="mt-6 p-2 rounded-md">
-                  <div className="text-sm text-text-secondary mb-2">Send your enquiry</div>
-                  <div className="flex gap-3 flex-wrap">
-                    <button
-                      type="button"
-                      onClick={() => window.open(`https://wa.me/447882733546?text=${encodeURIComponent(preparedMessage)}`, "_blank")}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-[#25D366] text-white rounded-full font-semibold"
-                    >
-                      Send via WhatsApp
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={() => window.location.href = `mailto:hashimtechsolutions@gmail.com?subject=${encodeURIComponent("New booking from " + formData.name)}&body=${encodeURIComponent(preparedMessage)}`}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-accent text-white rounded-full font-semibold"
-                    >
-                      Send Email
-                    </button>
-
-                    <button
-                      type="button"
-                      onClick={handleCopy}
-                      className="inline-flex items-center gap-2 px-4 py-2 bg-bg text-text-primary rounded-full border border-black/5"
-                    >
-                      Copy message
-                    </button>
-                  </div>
-                </div>
-              )}
+              {/* After submit we open WhatsApp directly; no preview or email option shown */}
             </form>
           </ScrollReveal>
         </div>
