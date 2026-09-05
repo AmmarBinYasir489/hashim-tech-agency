@@ -33,7 +33,7 @@ export interface Project {
   darkBg?: boolean;
 }
 
-const DEFAULT_TESTIMONIALS: Testimonial[] = [
+export const DEFAULT_TESTIMONIALS: Testimonial[] = [
   {
     id: "1",
     name: "Mam Naheeda",
@@ -93,7 +93,7 @@ const DEFAULT_TESTIMONIALS: Testimonial[] = [
   },
 ];
 
-const DEFAULT_PROJECTS: Project[] = [
+export const DEFAULT_PROJECTS: Project[] = [
   {
     id: "1",
     featured: true,

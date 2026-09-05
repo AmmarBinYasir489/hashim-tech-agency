@@ -1,11 +1,17 @@
 import { NextResponse } from "next/server";
-import { getTestimonials } from "@/lib/redis";
+import redis, { DEFAULT_TESTIMONIALS } from "@/lib/redis";
+
+export const dynamic = "force-dynamic";
 
 export async function GET() {
   try {
-    const data = await getTestimonials();
+    const data = await redis.get("testimonials");
+    if (!data || !Array.isArray(data) || data.length === 0) {
+      await redis.set("testimonials", DEFAULT_TESTIMONIALS);
+      return NextResponse.json(DEFAULT_TESTIMONIALS);
+    }
     return NextResponse.json(data);
   } catch {
-    return NextResponse.json([], { status: 500 });
+    return NextResponse.json(DEFAULT_TESTIMONIALS);
   }
 }
