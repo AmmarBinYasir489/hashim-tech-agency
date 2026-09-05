@@ -54,9 +54,9 @@ const fallbackProjects: Project[] = [
   {
     id: "3",
     featured: true,
-    image: "https://roadwiserecovery.com/og-image.jpg",
+    image: "https://roadwiserecovery.com/wp-content/uploads/2026/07/roadwise-recovery-7-1.jpeg",
     fallbackImage: "https://picsum.photos/seed/roadwise/900/600.jpg",
-    alt: "Roadwise Breakdown Recovery website",
+    alt: "Roadwise Breakdown Recovery - vehicle recovery in London",
     category: "Business Setup · Website · Social Media",
     title: "Roadwise Breakdown Recovery",
     summary: "Complete business setup for Fhad Rehman — logo design, business profiling, professional website with booking system, social media management, and full digital branding.",
