@@ -28,10 +28,11 @@ export default function Footer() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10 lg:gap-12 mb-16">
           {/* Brand */}
           <div className="sm:col-span-2 lg:col-span-1">
-            <Link href="/" className="mb-4 inline-block">
-              <div className="w-14 h-14 rounded-xl overflow-hidden">
-                <Image src="/logo.png" alt="Hashim Tech" width={56} height={56} className="object-contain" />
+            <Link href="/" className="flex items-center gap-3 mb-4">
+              <div className="w-12 h-12 rounded-xl overflow-hidden flex-shrink-0">
+                <Image src="/logo.png" alt="Hashim Tech" width={48} height={48} className="object-contain" />
               </div>
+              <span className="text-lg font-bold">Hashim Tech</span>
             </Link>
             <p className="text-sm text-white/60 leading-relaxed max-w-[300px]">
               Digital Solutions. Real Results. Helping businesses build, grow and succeed with professional digital and business services.
@@ -76,7 +77,7 @@ export default function Footer() {
             <div className="flex flex-col gap-3">
               <a href="tel:7882733546" className="flex items-center gap-2 text-sm text-white/50 hover:text-accent transition-colors">
                 <Phone className="w-4 h-4" />
-                7882733546
+                +44 7882733546
               </a>
               <a href="mailto:hashimtechsolutions@gmail.com" className="flex items-center gap-2 text-sm text-white/50 hover:text-accent transition-colors">
                 <Mail className="w-4 h-4" />

@@ -43,7 +43,7 @@ export default function CTABanner() {
               <div className="flex flex-col sm:flex-row items-center justify-center gap-6 text-white/60">
                 <a href="tel:7882733546" className="flex items-center gap-2 hover:text-accent transition-colors">
                   <Phone className="w-4 h-4" />
-                  <span className="text-sm font-medium">7882733546</span>
+                  <span className="text-sm font-medium">+44 7882733546</span>
                 </a>
                 <a href="mailto:hashimtechsolutions@gmail.com" className="flex items-center gap-2 hover:text-accent transition-colors">
                   <Mail className="w-4 h-4" />

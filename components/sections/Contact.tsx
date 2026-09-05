@@ -6,7 +6,7 @@ import { Mail, Phone, MapPin, Clock, Send, CheckCircle, AlertCircle, Loader2 } f
 import ScrollReveal from "../ui/ScrollReveal";
 
 const contactDetails = [
-  { icon: Phone, label: "Phone", value: "7882733546", href: "tel:7882733546" },
+  { icon: Phone, label: "Phone", value: "+44 7882733546", href: "tel:+447882733546" },
   { icon: Mail, label: "Email", value: "hashimtechsolutions@gmail.com", href: "mailto:hashimtechsolutions@gmail.com" },
   { icon: MapPin, label: "Location", value: "Remote-first, worldwide" },
   { icon: Clock, label: "Response Time", value: "Within 24 hours" },

@@ -8,6 +8,8 @@ import Finance from "@/components/sections/Finance";
 import WhyChooseUs from "@/components/sections/WhyChooseUs";
 import Process from "@/components/sections/Process";
 import Stats from "@/components/sections/Stats";
+import Projects from "@/components/sections/Projects";
+import Testimonials from "@/components/sections/Testimonials";
 import Contact from "@/components/sections/Contact";
 import CTABanner from "@/components/sections/CTABanner";
 import Footer from "@/components/sections/Footer";
@@ -26,6 +28,8 @@ export default function Home() {
       <WhyChooseUs />
       <Process />
       <Stats />
+      <Projects />
+      <Testimonials />
       <Contact />
       <CTABanner />
       <Footer />
