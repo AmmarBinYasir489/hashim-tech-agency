@@ -1,6 +1,7 @@
 "use client";
 
 import { useState, useEffect } from "react";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import Link from "next/link";
@@ -64,12 +65,12 @@ export default function Navbar() {
           }`}
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 font-bold text-lg tracking-tight z-10">
-            <div className="w-9 h-9 bg-accent rounded-[10px] flex items-center justify-center text-white font-bold text-sm shadow-accent">
-              HT
+          <Link href="/" className="flex items-center gap-3 font-bold text-lg tracking-tight z-10">
+            <div className="w-9 h-9 rounded-[10px] overflow-hidden flex-shrink-0">
+              <Image src="/logo.png" alt="Hashim Tech" width={36} height={36} className="object-cover" />
             </div>
-            <span className="font-extrabold text-xl tracking-tight hidden sm:inline">
-              Hashim<span className="text-accent">.</span>Tech
+            <span className="font-extrabold text-xl tracking-tight hidden sm:inline text-text-primary">
+              Hashim<span className="text-accent"> Tech</span>
             </span>
           </Link>
 
@@ -94,7 +95,7 @@ export default function Navbar() {
           <div className="hidden lg:block">
             <Link
               href="#contact"
-              className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-full shadow-accent hover:bg-accent-hover hover:shadow-[0_12px_40px_rgba(14,165,233,0.4)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
+              className="inline-flex items-center gap-2 px-6 py-2.5 bg-accent text-white text-sm font-semibold rounded-full shadow-accent hover:bg-accent-hover hover:shadow-[0_12px_40px_rgba(212,160,23,0.25)] hover:-translate-y-0.5 active:translate-y-0 transition-all duration-300"
             >
               Start a Project
               <ArrowRight className="w-4 h-4" />
@@ -137,12 +138,12 @@ export default function Navbar() {
             transition={{ duration: 0.5, ease: [0.34, 1.56, 0.64, 1] }}
           >
             <div className="flex items-center justify-between px-8 py-6 border-b border-black/5">
-              <Link href="/" className="flex items-center gap-2 font-bold">
-                <div className="w-9 h-9 bg-accent rounded-[10px] flex items-center justify-center text-white font-bold text-sm">
-                  HT
+              <Link href="/" className="flex items-center gap-3 font-bold">
+                <div className="w-9 h-9 rounded-[10px] overflow-hidden flex-shrink-0">
+                  <Image src="/logo.png" alt="Hashim Tech" width={36} height={36} className="object-cover" />
                 </div>
-                <span className="font-extrabold text-lg">
-                  Hashim<span className="text-accent">.</span>Tech
+                <span className="font-extrabold text-lg text-text-primary">
+                  Hashim<span className="text-accent"> Tech</span>
                 </span>
               </Link>
               <button

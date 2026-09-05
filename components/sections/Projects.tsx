@@ -3,12 +3,32 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 import { ArrowUpRight } from "lucide-react";
-import Link from "next/link";
 import SectionLabel from "../ui/SectionLabel";
 import ScrollReveal from "../ui/ScrollReveal";
 import StaggerContainer, { StaggerItem } from "../ui/StaggerContainer";
 
 const projectsList = [
+  {
+    featured: true,
+    image: "https://picsum.photos/seed/mayfair/900/600.jpg",
+    alt: "Mayfair Jumpstart",
+    category: "Education · Business",
+    title: "Mayfair Jumpstart",
+    summary:
+      "Full business setup and launch for Mayfair Jumpstart — marketing, site, and operational workflows completed.",
+    tech: ["Next.js", "Tailwind", "Stripe"],
+    url: "https://mayfairjumpstart.com/",
+  },
+  {
+    image: "https://picsum.photos/seed/roadwise/600/400.jpg",
+    alt: "Roadwise Recovery",
+    category: "Healthcare · Recovery Services",
+    title: "Roadwise Recovery",
+    summary:
+      "Complete business and web presence for Roadwise Recovery — patient intake, scheduling, and SEO-focused site.",
+    tech: ["Next.js", "SEO", "Analytics"],
+    url: "https://roadwiserecovery.com/",
+  },
   {
     featured: true,
     image: "https://picsum.photos/seed/hashim-project-1/900/600.jpg",
@@ -130,10 +150,12 @@ export default function Projects() {
                     ))}
                   </div>
                   <Link
-                    href="#"
+                    href={project.url ?? "#"}
+                    target={project.url ? "_blank" : undefined}
+                    rel={project.url ? "noopener noreferrer" : undefined}
                     className="inline-flex items-center gap-2 px-5 py-2.5 bg-bg text-text-primary text-sm font-semibold rounded-full shadow-neu-sm hover:shadow-neu hover:-translate-y-0.5 transition-all duration-300 w-fit"
                   >
-                    View Case Study
+                    {project.url ? "Visit Site" : "View Case Study"}
                     <ArrowUpRight className="w-4 h-4" />
                   </Link>
                 </div>

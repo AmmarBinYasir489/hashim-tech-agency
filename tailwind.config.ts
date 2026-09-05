@@ -9,14 +9,14 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        bg: "#e8e8e8",
-        "bg-dark": "#d8d8d8",
-        "bg-light": "#f2f2f2",
-        "text-primary": "#1a1a2e",
-        "text-secondary": "#4a4a6a",
-        "text-tertiary": "#8a8aa8",
-        accent: "#0ea5e9",
-        "accent-hover": "#0284c7",
+        bg: "#f7f7f8",
+        "bg-dark": "#0b0f1a",
+        "bg-light": "#ffffff",
+        "text-primary": "#071327",
+        "text-secondary": "#586174",
+        "text-tertiary": "#8a8fa3",
+        accent: "#D4A017",
+        "accent-hover": "#b8860b",
         success: "#4caf50",
         warning: "#ff9800",
         danger: "#f44336",
@@ -32,7 +32,7 @@ const config: Config = {
         "neu-in": "inset 5px 5px 10px #c8c8c8, inset -5px -5px 10px #ffffff",
         "neu-in-sm": "inset 3px 3px 6px #d0d0d0, inset -3px -3px 6px #ffffff",
         "neu-in-deep": "inset 8px 8px 16px #c0c0c0, inset -8px -8px 16px #ffffff",
-        accent: "0 8px 30px rgba(14,165,233,0.25)",
+        accent: "0 8px 30px rgba(212,160,23,0.25)",
       },
       borderRadius: {
         neu: "24px",
